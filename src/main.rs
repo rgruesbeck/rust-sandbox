@@ -54,6 +54,8 @@ fn primitives() {
 }
 
 fn strings() {
+    // https://www.youtube.com/watch?v=ClPrjjHmo2Y&list=PLLqEtX6ql2EyPAZ1M2_C0GgVd4A-_L4_5&index=6
+
     // two types of strings
     // both are groupings of chars u8's
 
