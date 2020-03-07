@@ -74,14 +74,72 @@ fn strings() {
     println!("string string: {}", string_string);
 
 
-    // convert string slices to String
+    // slices -> String
     let string_from_str: String = string_slice.to_string();
     println!("string from string slice: {}", string_from_str);
 
-    // convert string literal to String
+    // literal -> String
     let string_from_literal: String = "Hardcoded literal".to_string();
     println!("string from string literal: {}", string_from_literal);
+
+    // String -> slice 
+    let slice_from_string: &str = &string_from_str;
+    println!("slice from string: {}", slice_from_string);
+
+    // Adding strings
+
+    // the + opperator cannot concat string slices or literals
+    // creates compile error: `+` cannot be used to concatenate two `&str` strings
+    // let third = "first" + "second";
+
+    // Using array.concat()
+    let concat_string_literals_with_array = ["first", "second"].concat();
+    println!("concat string literals with array.concat() {}", concat_string_literals_with_array);
+
+    // Using format!()
+    let concat_string_literal_with_format_macro = format!("{} {}", "first", "second");
+    println!("concat string literals with format! {}", concat_string_literal_with_format_macro);
+
+    // Using String + <literal/slice>
+    let string_plus = string_string + " there!";
+    println!("concat string literals with String +: {}", string_plus);
+
+    // First string must be the owner
+    let string_more = String::from("!");
+    let string_plus_plus = string_plus + &string_more;
+    println!("concat string literals with String +: {}", string_plus_plus);
+
+    // Use push_str
+    let mut mut_string = String::new();
+    println!("new mut string: {}", mut_string);
+
+    // Push string slice
+    mut_string.push_str(string_slice);
+    println!("push slice: {}", mut_string);
+
+    // Push string literal
+    mut_string.push_str(" Partner!");
+    println!("push literal: {}", mut_string);
+
+    // Push char (char literal must be single qoutes)
+    mut_string.push('!'); // "!" would be a &str
+    println!("push char: {}", mut_string);
+
+
+    // Substrings
+    let string_from_substring: &str = &string_slice[0..3]; // start at zero, go upto but dont include 3. similar to [0..3)
+    println!("substring [0..2] {}", string_from_substring);
+    
+    // note: over indexing [0..200] will PANIC
+    // a safer way is to use string.chars().nth(1)
 }
+
+// functions and procedures 
+// functions return a value, procedures do not
+fn some_function(param_a: f32, param_b: i128) -> f32 {
+    10.0
+}
+
 
 fn main() {
     primitives();
